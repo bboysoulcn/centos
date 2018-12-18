@@ -1,9 +1,43 @@
-### 这是一个centos脚本
+### 概述
 
-最主要是给最小化安装的centos使用
-在centos 7.5上测试通过
+就是自己无聊写的一个脚本，欢迎使用，star，fork顺便关注我一波
 
-拥有下面的一些小功能
+`https://github.com/bboysoulcn/centos`
+
+### 使用方法
+
+这个是给最小化安装的centos使用的，在centos 7.5上测试过，当然其他的centos系统一般也没有什么问题，欢迎反馈，测试还有提交建议
+
+首先下载脚本
+
+`wget https://github.com/bboysoulcn/centos/blob/master/centos.sh`
+
+之后修改执行权限
+
+`chmod +x centos.sh`
+
+之后执行
+
+~~~bash
+[root@bboysoul-centos ~]# ./centos.sh
+**********************************
+Powered by bboysoul
+Email: bboysoulcn@gmail.com
+Hostname: bboysoul-centos
+Virtualization is not supported
+Cpu model: Intel(R) Xeon(R)CPU E5620
+Memory: 3790 M
+Swap:  3071 M
+Kernel version:  CentOS Linux release 7.5.1804 (Core)
+**********************************
+1) install_software    5) set_hostname	     9) install_ohmyzsh
+2) install_python      6) close_selinux	    10) add_user
+3) set_static_ip       7) install_docker    11) exit
+4) close_firewalld     8) change_swap	    12) help:
+#?
+~~~
+
+目前有下面这些小功能
 
 - 安装一些初始化的软件
 - 安装python
@@ -24,14 +58,6 @@
 
 ### 如果有好的建议和意见也可以提
 
-### todo
+欢迎关注Bboysoul的博客[www.bboysoul.com](http://www.bboysoul.com/)
 
-- 重启系统
-- 测试软件是不是安装完成了
-- 设置swap的时候GM大小写都可以
-- 修改ssh端口
-- 晚上定时kill ssh
-- ssh 端口 只允许特定ip
-- 显示系统信息
-- 设置dns
-- 内核优化
+Have Fun
