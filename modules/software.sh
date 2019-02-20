@@ -2,6 +2,28 @@
 changer_mirrors()
 {
 
+    echo "please select a mirror site"
+    select mirror_site in $mirror_sites:
+    do 
+        case $REPLY in
+        1) help
+        ;;
+        2) changer_mirrors
+        ;;
+        3) install_software
+        ;;
+        4) install_python
+        ;;
+        5) install_jdk
+        ;;
+        6) install_docker
+        ;;
+        7) install_ohmyzsh
+        ;;
+        *) echo "please select a true num"
+        ;;
+        esac
+    done
 }
 
 install_software()
@@ -9,7 +31,10 @@ install_software()
     echo "starting install software ..."
     yum install epel-release -y
     yum update -y
-    yum install git wget screen  nmap vim htop iftop iotop gcc gcc-c++ net-tools unzip nfs-utils psmisc zip rsync  -y
+    yum install -y git wget screen  nmap \
+		vim htop iftop iotop gcc \
+		gcc-c++ net-tools unzip  \
+		nfs-utils psmisc zip rsync telnet
     echo "software installed !!!"
 }
 
@@ -26,8 +51,6 @@ install_python()
 install_jdk()
 {
     echo  "starting install jdk ..."
-    
-    
 }
 
 install_docker()
@@ -41,8 +64,6 @@ install_docker()
     mv docker-compose-Linux-x86_64 /usr/bin/docker-compose
     chmod +x /usr/bin/docker-compose
     echo "docker-compose installed !!!"
-    read -p "Do you want to change the docker registry?(yese/no)"
-    if []
 }
 
 install_ohmyzsh()
@@ -51,12 +72,6 @@ install_ohmyzsh()
     yum install zsh -y
     sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     echo "oh-my-zsh installed !!!"
-}
-
-
-help()
-{
-
 }
 
 main()

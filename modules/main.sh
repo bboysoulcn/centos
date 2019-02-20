@@ -7,15 +7,15 @@ main()
     select centos_func in $centos_funcs:
     do 
         case $REPLY in
-        1) echo "help"
+        1) bash modules/help.sh
         ;;
-        2) echo "network"
+        2) bash modules/network.sh
         ;;
-        3) echo "software"
+        3) bash modules/software.sh
         ;;
-        4) echo "system"
+        4) bash modules/user.sh
         ;;
-        5) echo "user"
+        5) bash modules/help.sh
         ;;
         *) echo "please select a true num"
         ;;

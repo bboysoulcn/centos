@@ -2,6 +2,7 @@
 
 help()
 {
-
-    
+	echo "help.sh"    
 }
+
+help
