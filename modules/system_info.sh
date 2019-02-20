@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 print_systeminfo()
 {
     echo "**********************************"
@@ -21,3 +20,5 @@ print_systeminfo()
     echo "Kernel version: " `cat /etc/redhat-release`
     echo "**********************************"
 }
+
+print_systeminfo

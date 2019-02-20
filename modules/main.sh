@@ -1,37 +1,26 @@
+#!/bin/bash
+
 main()
 {
-    print_systeminfo
-    centos_funcs="help install_software install_python set_static_ip close_firewalld 
-                set_hostname close_selinux install_docker change_swap install_ohmyzsh add_user exit"
+    bash system_info.sh
+    centos_funcs="help network software system user"
     select centos_func in $centos_funcs:
     do 
         case $REPLY in
-        0) help
+        1) echo "help"
         ;;
-        1) install_software
+        2) echo "network"
         ;;
-        2) install_python
+        3) echo "software"
         ;;
-        3) set_static_ip
+        4) echo "system"
         ;;
-        4) close_firewalld
-        ;;
-        5) set_hostname
-        ;;
-        6) close_selinux
-        ;;
-        7) install_docker
-        ;;
-        8) change_swap
-        ;;
-        9) install_ohmyzsh
-        ;;
-        10) add_user
-        ;;
-        11) exit
+        5) echo "user"
         ;;
         *) echo "please select a true num"
         ;;
         esac
     done
 }
+
+main

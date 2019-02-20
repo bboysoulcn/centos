@@ -52,3 +52,37 @@ install_ohmyzsh()
     sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     echo "oh-my-zsh installed !!!"
 }
+
+
+help()
+{
+
+}
+
+main()
+{
+    centos_funcs="changer_mirrors install_software install_python install_jdk install_docker install_ohmyzsh"
+    select centos_func in $centos_funcs:
+    do 
+        case $REPLY in
+        1) help
+        ;;
+        2) changer_mirrors
+        ;;
+        3) install_software
+        ;;
+        4) install_python
+        ;;
+        5) install_jdk
+        ;;
+        6) install_docker
+        ;;
+        7) install_ohmyzsh
+        ;;
+        *) echo "please select a true num"
+        ;;
+        esac
+    done
+}
+
+main
