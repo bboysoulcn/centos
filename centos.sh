@@ -30,7 +30,7 @@ install_software()
     echo "starting install software ..."
     yum install epel-release -y
     yum update -y
-    yum install git wget screen  nmap vim htop iftop iotop gcc gcc-c++ net-tools unzip nfs-utils psmisc zip rsync telnet -y
+    yum install git wget screen  nmap vim htop iftop iotop gcc gcc-c++ net-tools unzip nfs-utils psmisc zip rsync telnet nano -y
     echo "software installed !!!"
 }
 
@@ -123,6 +123,7 @@ change_docker_mirror()
 }
 EOF
     systemctl restart docker
+    echo "docker mirror change successful"
 }
 
 change_swap()
