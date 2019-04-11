@@ -12,6 +12,7 @@
 # ssh 端口 只允许特定ip
 # 显示系统信息
 # 设置dns
+# 修改docker镜像地址
 
 
 add_user()
@@ -29,7 +30,7 @@ install_software()
     echo "starting install software ..."
     yum install epel-release -y
     yum update -y
-    yum install git wget screen  nmap vim htop iftop iotop gcc gcc-c++ net-tools unzip nfs-utils psmisc zip rsync  -y
+    yum install git wget screen  nmap vim htop iftop iotop gcc gcc-c++ net-tools unzip nfs-utils psmisc zip rsync telnet -y
     echo "software installed !!!"
 }
 
@@ -114,6 +115,16 @@ install_docker()
     echo "docker-compose installed !!!"
 }
 
+change_docker_mirror()
+{
+    cat >  /etc/docker/daemon.json <<EOF
+{
+"registry-mirrors": ["https://docker.mirrors.ustc.edu.cn"]
+}
+EOF
+    systemctl restart docker
+}
+
 change_swap()
 {
     echo "starting change swap ..."
@@ -158,17 +169,18 @@ print_systeminfo()
 
 help()
 {
-    echo "1) install_software    5) set_hostname	     9) install_ohmyzsh"
-    echo "2) install_python      6) close_selinux	    10) add_user"
-    echo "3) set_static_ip       7) install_docker    11) exit:"
-    echo "4) close_firewalld     8) change_swap"
+    echo "1) install_software	   6) close_selinux	    11) add_user"
+    echo "2) install_python	   7) install_docker	    12) exit"
+    echo "3) set_static_ip	   8) change_docker_mirror  13) help:"
+    echo "4) close_firewalld	   9) change_swap"
+    echo "5) set_hostname		  10) install_ohmyzsh"
 }
 
 main()
 {
     print_systeminfo
     centos_funcs="install_software install_python set_static_ip close_firewalld 
-                set_hostname close_selinux install_docker change_swap install_ohmyzsh add_user exit help"
+                set_hostname close_selinux install_docker change_docker_mirror change_swap install_ohmyzsh add_user exit help"
     select centos_func in $centos_funcs:
     do 
         case $REPLY in
@@ -186,15 +198,17 @@ main()
         ;;
         7) install_docker
         ;;
-        8) change_swap
+        8) change_docker_mirror
         ;;
-        9) install_ohmyzsh
+        9) change_swap
         ;;
-        10) add_user
+        10) install_ohmyzsh
         ;;
-        11) exit
+        11) add_user
         ;;
-        12) help
+        12) exit
+        ;;
+        13) help
         ;;
         *) echo "please select a true num"
         ;;
