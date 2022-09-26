@@ -13,7 +13,9 @@
 
 首先下载脚本
 
-`wget https://github.com/bboysoulcn/centos/blob/master/centos.sh`
+```sh
+wget https://raw.githubusercontent.com/hx92/centos/master/centos.sh
+```
 
 之后修改执行权限
 
